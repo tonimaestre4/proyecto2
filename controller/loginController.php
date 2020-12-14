@@ -9,9 +9,9 @@ echo $tipo;
 if($tipo=='Camarero'){
     header('Location: ../view/camareros.php');
 }
-if($tipo=='Mantenimiento'){
-    header('Location: ../view/mantenimiento.php');
-}
+// if($tipo=='Mantenimiento'){
+//     header('Location: ../view/mantenimiento.php');
+// }
 if($tipo=='Administrador'){
     header('Location: ../view/zona.admin.php');
 }
@@ -21,9 +21,9 @@ if($empleadoDAO->login($empleado)!='no encontrar'){
     if($empleadoDAO->login($empleado)=='Camarero'){
         header('Location: ../view/camareros.php');    
     }
-    if($empleado->getTipo_empleado()=='Mantenimiento'){
-        header('Location: ../view/mantenimiento.php');    
-    }
+    // if($empleado->getTipo_empleado()=='Mantenimiento'){
+    //     header('Location: ../view/mantenimiento.php');    
+    // }
     header('Location: ../view/zona.admin.php');
 }else {
     header('Location: ../view/login.php?mensaje=1');

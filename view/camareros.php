@@ -29,7 +29,7 @@
       <!-- Aqui llamamos a la funcion filtrototal que nos filtrar por nombre,sala,fecha y el estado de la mesa y la funcion mostrartotal para mostrar todas las ocupaciones desde que abrio el restaurante-->
       <div style="padding-left: 11%;">
          <h3 style="color:#0ea4fb;">Camareros</h3>
-         <h5 style="color:#717981;"><a style="text-decoration:none;color:#69bcfb;" href="zona.admin.php">Inicio</a> > Camareros</h5>
+         <h5 style="color:#717981;"><a style="text-decoration:none;color:#69bcfb;" href="zona.emp.php">Inicio</a> > Camareros</h5>
       </div>
       <div class="row">
          <div class="one-column">
@@ -71,7 +71,7 @@
       </div>
       </br>
       <footer>
-         <h5 style="font-size:15px;">© 2015-2020 Cotizador web desarrollado por: <a style="color:blue;">chasecake@factory.com</a></h5>
+         <h5 style="font-size:15px;">© 2015-2020 Cotizador web desarrollado por: <a style="color:blue;">Toni Maestre Bayo</a></h5>
       </footer>
    </body>
 </html>

@@ -44,6 +44,13 @@ body {
     border-radius: 14px;
 }
 
+.four-column-mesa {
+    float: left;
+    width: 25%;
+    /*background-color: teal;*/
+    border-radius: 14px;
+}
+
 .divbarra {
     color:#000!important;
     background-color:#f0ffef!important;
@@ -142,7 +149,9 @@ footer {
     width: 60%;
 }
 
-.uno {
+
+
+/* .uno {
     margin-left: 12%;
     margin-top: 3%;
     width: 30%;
@@ -177,4 +186,4 @@ footer {
     width: 30%;
     float: left;
     position: relative;
-}
+} */

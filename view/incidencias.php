@@ -42,7 +42,7 @@
       </div>
       </br>
       <footer style="position:absolute;">
-         <h5 style="font-size:15px;">© 2015-2020 Cotizador web desarrollado por: <a style="color:blue;">chasecake@factory.com</a></h5>
+         <h5 style="font-size:15px;">© 2015-2020 Cotizador web desarrollado por: <a style="color:blue;">Toni Maestre Bayo</a></h5>
       </footer>
    </body>
 </html>

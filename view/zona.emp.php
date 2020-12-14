@@ -13,7 +13,7 @@
       <!-- Aqui mostramos la pagina principal dodne vemos todas las salas y las estadisticas-->
       <div style="padding-left: 11%;">
          <h3 style="color:#0ea4fb;">Panel de control</h3>
-         <h5 style="color:#717981;"><a style="text-decoration:none;color:#717981;" href="zona.admin.php">Inicio</a> | <a style="text-decoration:none;color:#717981;" href="administrarusu.php"> Administrar Usuarios</a></h5>
+         <h5 style="color:#717981;"><a style="text-decoration:none;color:#717981;" href="zona.emp.php">Inicio</a></h5>
       </div>
       <div class="row">
          <div class="one-column">

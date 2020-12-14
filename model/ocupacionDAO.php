@@ -20,14 +20,14 @@ class ocupacionDAO{
     }
 
     //Funcion para estadísticas activas en zona.admin.php.
-    public function estadisticaactiva(){
-        $query= "SELECT COUNT(id_mesa) as 'activa' FROM tbl_mesa  WHERE ocupacion_mesa LIKE 'Ocupado';";
-        $sentencia=$this->pdo->prepare($query);
-        $sentencia->execute();
-        $activa=$sentencia->fetch(PDO::FETCH_ASSOC);
-        echo "<p style='font-size:30px; margin:0;color:white;'>".$activa['activa']."</p>";
-        echo "<p style='font-size:20px; margin:0; color:white;'>MESAS OCUPADAS</p>";
-    }
+    // public function estadisticaactiva(){
+    //     $query= "SELECT COUNT(id_mesa) as 'activa' FROM tbl_mesa  WHERE ocupacion_mesa LIKE 'Ocupado';";
+    //     $sentencia=$this->pdo->prepare($query);
+    //     $sentencia->execute();
+    //     $activa=$sentencia->fetch(PDO::FETCH_ASSOC);
+    //     echo "<p style='font-size:30px; margin:0;color:white;'>".$activa['activa']."</p>";
+    //     echo "<p style='font-size:20px; margin:0; color:white;'>MESAS OCUPADAS</p>";
+    // }
 
     //Funcion para mostrar las mesas ocupadas.
     public function mesasocupadas(){
@@ -96,7 +96,7 @@ class ocupacionDAO{
         echo "</table>";
     }
 
-    //Funcion para mostrar el numero de las incidencias totales en zona.admin.php
+    // //Funcion para mostrar el numero de las incidencias totales en zona.admin.php
     public function estadisiticaincidencias(){
         $query= "SELECT COUNT(id_incidencia) as 'incidencia' FROM tbl_incidencia";
         $sentencia=$this->pdo->prepare($query);
