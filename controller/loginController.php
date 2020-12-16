@@ -7,7 +7,7 @@ $empleadoDAO = new EmpleadoDAO();
 $tipo=$empleadoDAO->login($empleado);
 echo $tipo;
 if($tipo=='Camarero'){
-    header('Location: ../view/camareros.php');
+    header('Location: ../view/zona.emp.php');
 }
 // if($tipo=='Mantenimiento'){
 //     header('Location: ../view/mantenimiento.php');
@@ -19,7 +19,7 @@ die;
 if($empleadoDAO->login($empleado)!='no encontrar'){
     
     if($empleadoDAO->login($empleado)=='Camarero'){
-        header('Location: ../view/camareros.php');    
+        header('Location: ../view/zona.emp.php');    
     }
     // if($empleado->getTipo_empleado()=='Mantenimiento'){
     //     header('Location: ../view/mantenimiento.php');    

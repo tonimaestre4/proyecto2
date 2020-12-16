@@ -36,6 +36,9 @@
             $salaDAO->nombresala($sala);
             ?>
       </div>
+      <div style="padding-left: 11%;" class="w3-container">
+      <a href="../options/insertarusu.php"><input type="date" class="button_active" value="fecha"></a>
+  </div>
       <div class="row">
          <div class="one-column">
             <?php

@@ -7,6 +7,15 @@ class AdminDao{
         $this->pdo=$pdo;
     }
 
+    public function getUser($DNI_empleado){
+        $query ="SELECT * FROM tbl_empleado WHERE DNI_empleado=?";
+        $sentencia=$this->pdo->prepare($query);
+        $sentencia->bindParam(1,$DNI_empleado);
+        $sentencia->execute();
+        $result=$sentencia->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
     public function eliminarUsuario($DNI_empleado){
         $query= "DELETE FROM tbl_empleado WHERE DNI_empleado=?";
         $sentencia=$this->pdo->prepare($query);

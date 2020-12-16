@@ -19,12 +19,17 @@
       <div style="padding-left: 11%;">
   <section class="form-register">
   <form action="cambiar.php" method="POST">
+     <?php 
+     include '../model/adminDAO.php';
+     $modificar=new adminDao();
+     $milista=$modificar->getUser($_GET['DNI_empleado']);
+      ?>
     <h4>MODIFICAR DATOS DEL EMPLEADO</h4>
-    <input class="controls" type="hidden" name="DNI_empleado" value="<?php echo $_GET['DNI_empleado']?>">
-    <input class="controls" type="text" name="nombre_empleado" placeholder="Nombre" value="<?php echo $_REQUEST['nombre_empleado']?>">
-    <input class="controls" type="text" name="apellido1_empleado" placeholder="Apellido paterno" value="<?php echo $_REQUEST['apellido1_empleado']?>">
-    <input class="controls" type="text" name="apellido2_empleado" placeholder="Apellido materno" value="<?php echo $_REQUEST['apellido2_empleado']?>">
-    <input class="controls" type="text" name="tipo_empleado" placeholder="Tipo" value="<?php echo $_REQUEST['tipo_empleado']?>">
+    <input class="controls" type="hidden" name="DNI_empleado" value="<?php echo $milista['DNI_empleado']?>">
+    <input class="controls" type="text" name="nombre_empleado" placeholder="Nombre" value="<?php echo $milista['nombre_empleado']?>">
+    <input class="controls" type="text" name="apellido1_empleado" placeholder="Apellido paterno" value="<?php echo $milista['apellido1_empleado']?>">
+    <input class="controls" type="text" name="apellido2_empleado" placeholder="Apellido materno" value="<?php echo $milista['apellido2_empleado']?>">
+    <input class="controls" type="text" name="tipo_empleado" placeholder="Tipo" value="<?php echo $milista['tipo_empleado']?>">
     <input type="submit" name="submit" value="Modificar">
   </section>
 

@@ -43,7 +43,7 @@ foreach($listausuarios as $usuario){
     echo "<td>{$usuario['nombre_empleado']}</td>";
     echo "<td>{$usuario['apellido1_empleado']}</td>";
     echo "<td>{$usuario['tipo_empleado']}</td>";
-    echo "<td><a href='../options/modificar.php?DNI_empleado={$usuario['DNI_empleado']}&nombre_empleado={$usuario['nombre_empleado']}&apellido1_empleado={$usuario['apellido1_empleado']}&apellido2_empleado={$usuario['apellido2_empleado']}&tipo_empleado={$usuario['tipo_empleado']}'>Modificar<a></td>";
+    echo "<td><a href='../options/modificar.php?DNI_empleado={$usuario['DNI_empleado']}'>Modificar<a></td>";
     echo "<td><a href='../options/eliminar.php?DNI_empleado={$usuario['DNI_empleado']}'>Eliminar<a></td>";
     echo "</tr>";
 }
