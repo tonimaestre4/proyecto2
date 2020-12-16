@@ -19,6 +19,16 @@ class ocupacionDAO{
         echo "<p style='font-size:20px; margin:0; color:white;'>OCUPACIÓN TOTAL</p>";
     }
 
+    public function franjaocupacion(){
+        $query= "SELECT DISTINCT fecha_ocupacion FROM tbl_ocupacion";
+        $sentencia=$this->pdo->prepare($query);
+        $sentencia->execute();
+        $franja_ocupacion=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($franja_ocupacion as $franjas) {
+            echo '<option value="'.$franjas['franja_ocupacion'].'">'.$franjas['franja_ocupacion'].'</option>';
+        }
+    }
+
     //Funcion para estadísticas activas en zona.admin.php.
     // public function estadisticaactiva(){
     //     $query= "SELECT COUNT(id_mesa) as 'activa' FROM tbl_mesa  WHERE ocupacion_mesa LIKE 'Ocupado';";

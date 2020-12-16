@@ -38,7 +38,7 @@
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title--style-4">Reserva tu mesa</h2>
+                    <h2 class="title--style-4">Reservar Mesa</h2>
                     <form method="POST">
                         <div class="row row-space">
                             <div class="col-2">
@@ -49,8 +49,8 @@
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label--style-4">Apellido</label>
-                                    <input class="input--style-4" type="text" name="apellido">
+                                    <label class="label--style-4">Teléfono</label>
+                                    <input class="input--style-4" type="text" name="telf">
                                 </div>
                             </div>
                         </div>
@@ -66,40 +66,9 @@
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label--style-4">DNI</label>
-                                    <input class="input--style-4" type="text" name="DNI">
+                                    <label class="label--style-4">Hora de reserva</label>
+                                    <input class="input--style-4" type="text" name="franja">
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label--style-4">Correo de contacto</label>
-                                    <input class="input--style-4" type="email" name="correo">
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label--style-4">Número de Teléfono</label>
-                                    <input class="input--style-4" type="text" name="telf">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <label class="label--style-4">Mesa para reservar</label>
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="subject">
-                                    <option disabled="disabled" selected="selected">Elija un tipo de mesa</option>
-                                    <option>Comedor Central</option>
-                                    <option>Comedor Superior</option>
-                                    <option>Sala Privada Interior</option>
-                                    <option>Sala Privada Playa</option>
-                                    <option>Sala Privada Montaña</option>
-                                    <option>Terraza Montaña</option>
-                                    <option>Terraza Playa</option>
-                                    <option>Terraza Central</option>
-                                </select>
-                                <div class="select-dropdown"></div>
                             </div>
                         </div>
                         <div class="p-t-15">
