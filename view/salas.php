@@ -30,7 +30,7 @@
       <div style="padding-left: 11%;">
          <?php
             require_once '../model/salaDAO.php';
-            $id=$_POST['sala'];
+            $id=$_REQUEST['id_sala'];
             $sala = new Sala($id);
             $salaDAO = new SalaDAO();
             $salaDAO->nombresala($sala);
@@ -38,23 +38,32 @@
       </div>
       <div style="padding-left: 11%;">
       <label>Fecha:</label>
-      <form action="salas.php" method="post">
-            <input type="date" id="fecha" name="fecha">
-            <label>Franja horaria:</label>
-            <select name="franja" id="franja" name="franja" class="form-control">
-            <option value="1">12:00h-13:00h</option>
-            <option value="2">13:00h-14:00h</option>
-            <option value="3">14:00h-15:00h</option>
-            <option value="4">15:00h-16:00h</option>
-            <option value="5">16:00h-17:00h</option>
-            <option value="6">17:00h-18:00h</option>
-            <option value="7">18:00h-19:00h</option>
-            <option value="8">19:00h-20:00h</option>
-            <option value="9">20:00h-21:00h</option>
-            <option value="10">21:00h-22:00h</option>
-            <option value="11">22:00h-23:00h</option>
-            </select>
-            <input type="hidden" id="sala" name="sala" value="<?php echo $_GET['id_sala']?>">
+      <form action="salas.php" method="get">
+      <?php
+      $hoy = date("Y-m-d");
+      $max = date("Y-m-d", strtotime($hoy . "+ 14 days"));
+      if (isset($_REQUEST['fecha'])) {
+         echo "<input type='date' name='fecha' value='" . $_REQUEST['fecha'] . "' min='" . $hoy . "' max='" . $max . "'>";
+      } else {
+         echo "<input type='date' name='fecha' value='" . $hoy . "' min='" . $hoy . "' max='" . $max . "'>";
+      }
+      ?>
+      <!-- <input type="date" id="fecha" name="fecha"> -->
+            <!-- <label>Franja horaria:</label>
+            <select name="franja" id="franja" class="form-control">
+            <option value="12:00h-13:00h">12:00h-13:00h</option>
+            <option value="13:00h-14:00h">13:00h-14:00h</option>
+            <option value="14:00h-15:00h">14:00h-15:00h</option>
+            <option value="15:00h-16:00h">15:00h-16:00h</option>
+            <option value="16:00h-17:00h">16:00h-17:00h</option>
+            <option value="17:00h-18:00h">17:00h-18:00h</option>
+            <option value="18:00h-19:00h">18:00h-19:00h</option>
+            <option value="19:00h-20:00h">19:00h-20:00h</option>
+            <option value="20:00h-21:00h">20:00h-21:00h</option>
+            <option value="21:00h-22:00h">21:00h-22:00h</option>
+            <option value="22:00h-23:00h">22:00h-23:00h</option>
+            </select> -->
+            <input type="hidden" id="id_sala" name="id_sala" value="<?php echo $_GET['id_sala']?>">
             <input class="submit" type="submit" value="Filtrar">
             </div>
             </select>
@@ -63,13 +72,18 @@
       <div class="row">
          <div class="one-column">
             <?php
-               // if (isset($_REQUEST['franja'])) 
+               if (isset($_REQUEST['fecha'])) 
                {
                   $id=$_GET['id_sala'];
-                  $sala = new Sala($id);
+                  $fecha=$_GET['fecha'];
                   $salaDAO = new SalaDAO();
-                  $salaDAO->ocupacionsala($sala);
-               }  
+                  $salaDAO->ocupacionsala($id,$fecha);
+               }  else{
+                  $id=$_GET['id_sala'];
+                  $fecha=date("Y-m-d");
+                  $salaDAO = new SalaDAO();
+                  $salaDAO->ocupacionsala($id,$fecha);
+               }
             ?>
          </div>
       </div>

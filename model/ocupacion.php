@@ -3,9 +3,7 @@
     class Ocupacion{
         public $id_ocupacion;
         public $fecha_ocupacion;
-        public $hora_inicio;
-        public $hora_final;
-        public $estado_ocupacion;
+        public $franja_ocupacion;
         public $DNI_empleado;
         public $id_mesa;
 
@@ -54,66 +52,6 @@
         }
 
         /**
-         * Get the value of hora_inicio
-         */ 
-        public function getHora_inicio()
-        {
-                return $this->hora_inicio;
-        }
-
-        /**
-         * Set the value of hora_inicio
-         *
-         * @return  self
-         */ 
-        public function setHora_inicio($hora_inicio)
-        {
-                $this->hora_inicio = $hora_inicio;
-
-                return $this;
-        }
-
-        /**
-         * Get the value of hora_final
-         */ 
-        public function getHora_final()
-        {
-                return $this->hora_final;
-        }
-
-        /**
-         * Set the value of hora_final
-         *
-         * @return  self
-         */ 
-        public function setHora_final($hora_final)
-        {
-                $this->hora_final = $hora_final;
-
-                return $this;
-        }
-
-        /**
-         * Get the value of estado_ocupacion
-         */ 
-        public function getEstado_ocupacion()
-        {
-                return $this->estado_ocupacion;
-        }
-
-        /**
-         * Set the value of estado_ocupacion
-         *
-         * @return  self
-         */ 
-        public function setEstado_ocupacion($estado_ocupacion)
-        {
-                $this->estado_ocupacion = $estado_ocupacion;
-
-                return $this;
-        }
-
-        /**
          * Get the value of DNI_empleado
          */ 
         public function getDNI_empleado()
@@ -149,6 +87,26 @@
         public function setId_mesa($id_mesa)
         {
                 $this->id_mesa = $id_mesa;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of franja_ocupacion
+         */ 
+        public function getFranja_ocupacion()
+        {
+                return $this->franja_ocupacion;
+        }
+
+        /**
+         * Set the value of franja_ocupacion
+         *
+         * @return  self
+         */ 
+        public function setFranja_ocupacion($franja_ocupacion)
+        {
+                $this->franja_ocupacion = $franja_ocupacion;
 
                 return $this;
         }

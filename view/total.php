@@ -45,14 +45,6 @@
                         $ocupacionDAO->formularionombre();
                         ?>          
                   </select>
-                  <label>Apellido:</label>
-                  <select type="text" id="apellido" name="apellido">
-                     <option value="">Seleccione:</option>
-                     <?php
-                        $ocupacionDAO = new OcupacionDAO();
-                        $ocupacionDAO->formularioapellido();
-                        ?>    
-                  </select>
                   <label>Sala:</label>
                   <select type="text" id="sala" name="sala">
                      <option value="">Seleccione:</option>
@@ -77,12 +69,12 @@
                         $ocupacionDAO->formulariofecha();
                         ?>      
                   </select>
-                  <label>Estado:</label>
-                  <select type="text" id="estado" name="estado">
+                  <label>Franja:</label>
+                  <select type="text" id="franja" name="franja">
                      <option value="">Seleccione:</option>
                      <?php
                         $ocupacionDAO = new OcupacionDAO();
-                        $ocupacionDAO->formularioestado();
+                        $ocupacionDAO->formulariofranja();
                         ?>      
                   </select>
                   <input class="submit" type="submit" value="Filtrar">
@@ -91,7 +83,7 @@
             </br>
             <?php
                require_once '../model/ocupacionDAO.php';
-               if (isset($_POST['empleado']) || isset($_POST['apellido']) ||isset($_POST['sala']) || isset($_POST['personas']) || isset($_POST['fecha']) || isset($_POST['estado_ocupacion'])){
+               if (isset($_POST['empleado']) ||isset($_POST['sala']) || isset($_POST['personas']) || isset($_POST['fecha']) || isset($_POST['franja'])){
                  $ocupacionDAO = new OcupacionDAO();
                  $ocupacionDAO->filtrototal();
                } else {

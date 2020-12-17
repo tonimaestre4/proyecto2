@@ -27,6 +27,8 @@
    <body>
       <?php
          require_once '../controller/sessionController.php';
+        //  session_start();
+        $dni=$_SESSION['DNI_empleado'];
          ?>
       <!-- Aqui mostramos la pagina principal dodne vemos todas las salas y las estadisticas-->
       <div style="padding-left: 11%;">
@@ -39,18 +41,19 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title--style-4">Reservar Mesa</h2>
-                    <form method="POST">
+                    <form action="../options/reserva.php" method="POST">
                         <div class="row row-space">
                             <div class="col-2">
+                            <input type="hidden" id="id_mesa" name="id_mesa" value="<?php echo $_REQUEST['id_mesa']?>">
                                 <div class="input-group">
                                     <label class="label--style-4">Nombre</label>
-                                    <input class="input--style-4" type="text" name="nombre">
+                                    <input class="input--style-4" type="text" name="nombre_ocupacion">
                                 </div>
                             </div>
                             <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label--style-4">Teléfono</label>
-                                    <input class="input--style-4" type="text" name="telf">
+                            <div class="input-group">
+                                    <label class="label--style-4">DNI del Empleado</label>
+                                    <input class="input--style-4" type="text" name="DNI_empleado" value="<?php echo $dni ?>">
                                 </div>
                             </div>
                         </div>
@@ -59,15 +62,33 @@
                                 <div class="input-group">
                                     <label class="label--style-4">Fecha de reserva</label>
                                     <div class="input-group-icon">
-                                        <input class="input--style-4 js-datepicker" type="date" name="fechareserva">
+                                        <input class="input--style-4 js-datepicker" type="text" name="fecha_ocupacion" value="<?php echo $_REQUEST['fecha_ocupacion']?>" readonly>
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-2">
+                            <div class="input-group">
+                                    <label class="label--style-4">Número de Mesa</label>
+                                    <input class="input--style-4" type="text" name="id_mesa" value="<?php echo $_REQUEST['id_mesa']?>" readonly>
+                                </div>
+                            </div>
+                            <div class="col-2">
                                 <div class="input-group">
                                     <label class="label--style-4">Hora de reserva</label>
-                                    <input class="input--style-4" type="text" name="franja">
+                                    <select class="select--style-4" name="franja_ocupacion" id="franja_ocupacion">
+                                    <option value="12:00h-13:00h">12:00h-13:00h</option>
+                                    <option value="13:00h-14:00h">13:00h-14:00h</option>
+                                    <option value="14:00h-15:00h">14:00h-15:00h</option>
+                                    <option value="15:00h-16:00h">15:00h-16:00h</option>
+                                    <option value="16:00h-17:00h">16:00h-17:00h</option>
+                                    <option value="17:00h-18:00h">17:00h-18:00h</option>
+                                    <option value="18:00h-19:00h">18:00h-19:00h</option>
+                                    <option value="19:00h-20:00h">19:00h-20:00h</option>
+                                    <option value="20:00h-21:00h">20:00h-21:00h</option>
+                                    <option value="21:00h-22:00h">21:00h-22:00h</option>
+                                    <option value="22:00h-23:00h">22:00h-23:00h</option>
+                                    </select> 
                                 </div>
                             </div>
                         </div>

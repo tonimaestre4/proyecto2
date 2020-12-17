@@ -20,7 +20,7 @@ class ocupacionDAO{
     }
 
     public function franjaocupacion(){
-        $query= "SELECT DISTINCT fecha_ocupacion FROM tbl_ocupacion";
+        $query= "SELECT DISTINCT franja_ocupacion FROM tbl_ocupacion";
         $sentencia=$this->pdo->prepare($query);
         $sentencia->execute();
         $franja_ocupacion=$sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -28,6 +28,24 @@ class ocupacionDAO{
             echo '<option value="'.$franjas['franja_ocupacion'].'">'.$franjas['franja_ocupacion'].'</option>';
         }
     }
+
+    // public function reserva(){
+    //     $query = "INSERT INTO tbl_ocupacion (nombre_ocupacion,fecha_ocupacion,franja_ocupacion,DNI_empleado) VALUES (?,?,?,?)";
+    // $sentencia=$pdo->prepare($query);
+
+    // $nombre_ocupacion=$_POST['nombre_ocupacion']; 
+    // $fecha_ocupacion=$_POST['fecha_ocupacion'];
+    // $franja_ocupacion=$_POST['franja_ocupacion'];
+    // $DNI_empleado=$_POST['DNI_empleado']; 
+        
+    //     $sentencia->bindParam(1,$nombre_ocupacion);
+    //     $sentencia->bindParam(2,$fecha_ocupacion);
+    //     $sentencia->bindParam(3,$franja_ocupacion);
+    //     $sentencia->bindParam(4,$DNI_empleado);
+    //     $sentencia->execute();
+
+    //     header ('Location:../view/salas.php');
+    // }
 
     //Funcion para estadísticas activas en zona.admin.php.
     // public function estadisticaactiva(){
@@ -128,28 +146,22 @@ class ocupacionDAO{
             echo "<tr>";
                 echo "<th>#</th>";
                 echo "<th>Empleado</th>";
-                echo "<th>Apellido</th>";
                 echo "<th>Sala</th>";
                 echo "<th>Mesa</th>";
                 echo "<th>Nº Personas</th>";
                 echo "<th>Fecha</th>";
-                echo "<th>Hora Inicial</th>";
-                echo "<th>Hora Final</th>";
-                echo "<th>Estado</th>";
+                echo "<th>Franja Horaria</th>";
             echo "</tr>";
             
         foreach($total as $totales) {
             echo "<tr>";
                 echo "<td>".$totales['id_ocupacion']."</td>";
                 echo "<td>".$totales['nombre_empleado']."</td>";
-                echo "<td>".$totales['apellido1_empleado']."</td>";
                 echo "<td>".$totales['nombre_sala']."</td>";
                 echo "<td>".$totales['id_mesa']."</td>";
                 echo "<td>".$totales['capacidad_mesa']."</td>";
                 echo "<td>".$totales['fecha_ocupacion']."</td>";
-                echo "<td>".$totales['hora_inicio']."</td>";
-                echo "<td>".$totales['hora_final']."</td>";
-                echo "<td>".$totales['estado_ocupacion']."</td>";
+                echo "<td>".$totales['franja_ocupacion']."</td>";
                 echo "</tr>";
         }  
         echo "</table>";
@@ -158,13 +170,12 @@ class ocupacionDAO{
     //Funcion para el filtro total.
     public function filtrototal(){
         $empleado=$_POST['empleado'];
-        $apellido=$_POST['apellido'];
         $sala=$_POST['sala'];
         $capacidad=$_POST['personas'];
         $fecha=$_POST['fecha'];
-        $estados=$_POST['estado'];
-        $query= "SELECT tbl_ocupacion.* , tbl_empleado.nombre_empleado, tbl_empleado.apellido1_empleado, tbl_sala.nombre_sala, tbl_mesa.id_mesa, tbl_mesa.capacidad_mesa FROM `tbl_ocupacion` INNER JOIN tbl_empleado ON tbl_ocupacion.DNI_empleado=tbl_empleado.DNI_empleado INNER JOIN tbl_mesa ON tbl_ocupacion.id_mesa=tbl_mesa.id_mesa
-        INNER JOIN tbl_sala ON tbl_mesa.id_sala=tbl_sala.id_sala WHERE tbl_empleado.nombre_empleado LIKE '%$empleado%' AND tbl_empleado.apellido1_empleado LIKE '%$apellido%' AND tbl_sala.nombre_sala LIKE '%$sala%' AND tbl_mesa.capacidad_mesa LIKE '%$capacidad%' AND tbl_ocupacion.fecha_ocupacion LIKE '%$fecha%' AND tbl_ocupacion.estado_ocupacion LIKE '%$estados%';";
+        $franja=$_POST['franja'];
+        $query= "SELECT tbl_ocupacion.* , tbl_empleado.nombre_empleado, tbl_sala.nombre_sala, tbl_mesa.id_mesa, tbl_mesa.capacidad_mesa FROM `tbl_ocupacion` INNER JOIN tbl_empleado ON tbl_ocupacion.DNI_empleado=tbl_empleado.DNI_empleado INNER JOIN tbl_mesa ON tbl_ocupacion.id_mesa=tbl_mesa.id_mesa
+        INNER JOIN tbl_sala ON tbl_mesa.id_sala=tbl_sala.id_sala WHERE tbl_empleado.nombre_empleado LIKE '%$empleado%' AND tbl_sala.nombre_sala LIKE '%$sala%' AND tbl_mesa.capacidad_mesa LIKE '%$capacidad%' AND tbl_ocupacion.fecha_ocupacion LIKE '%$fecha%' AND tbl_ocupacion.franja_ocupacion LIKE '%$franja%';";
         $sentencia=$this->pdo->prepare($query);
         $sentencia->execute();
         $total=$sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -173,28 +184,22 @@ class ocupacionDAO{
             echo "<tr>";
                 echo "<th>#</th>";
                 echo "<th>Empleado</th>";
-                echo "<th>Apellido</th>";
                 echo "<th>Sala</th>";
                 echo "<th>Mesa</th>";
                 echo "<th>Nº Personas</th>";
                 echo "<th>Fecha</th>";
-                echo "<th>Hora Inicial</th>";
-                echo "<th>Hora Final</th>";
-                echo "<th>Estado</th>";
+                echo "<th>Franja</th>";
             echo "</tr>";
             
         foreach($total as $totales) {
             echo "<tr>";
                 echo "<td>".$totales['id_ocupacion']."</td>";
                 echo "<td>".$totales['nombre_empleado']."</td>";
-                echo "<td>".$totales['apellido1_empleado']."</td>";
                 echo "<td>".$totales['nombre_sala']."</td>";
                 echo "<td>".$totales['id_mesa']."</td>";
                 echo "<td>".$totales['capacidad_mesa']."</td>";
                 echo "<td>".$totales['fecha_ocupacion']."</td>";
-                echo "<td>".$totales['hora_inicio']."</td>";
-                echo "<td>".$totales['hora_final']."</td>";
-                echo "<td>".$totales['estado_ocupacion']."</td>";
+                echo "<td>".$totales['franja_ocupacion']."</td>";
                 echo "</tr>";
         }  
         echo "</table>";
@@ -273,6 +278,17 @@ class ocupacionDAO{
         $fecha_ocupacion=$sentencia->fetchAll(PDO::FETCH_ASSOC);
         foreach ($fecha_ocupacion as $fecha) {
             echo '<option value="'.$fecha['fecha_ocupacion'].'">'.$fecha['fecha_ocupacion'].'</option>';
+        }
+    }
+
+     //funcion para el select del filtro franja.
+     public function formulariofranja(){
+        $query= "SELECT DISTINCT franja_ocupacion FROM tbl_ocupacion ORDER BY franja_ocupacion ASC";
+        $sentencia=$this->pdo->prepare($query);
+        $sentencia->execute();
+        $franja_ocupacion=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($franja_ocupacion as $franja) {
+            echo '<option value="'.$franja['franja_ocupacion'].'">'.$franja['franja_ocupacion'].'</option>';
         }
     }
 

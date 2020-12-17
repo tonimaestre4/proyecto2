@@ -52,11 +52,11 @@ class salaDAO{
         
     }
 
-    public function ocupacionsala($sala){
+    public function ocupacionsala($sala,$fecha){
         // $query= "SELECT tbl_ocupacion.* , tbl_empleado.nombre_empleado, tbl_sala.nombre_sala, tbl_mesa.id_mesa, tbl_mesa.capacidad_mesa FROM `tbl_ocupacion` INNER JOIN tbl_empleado ON tbl_ocupacion.DNI_empleado=tbl_empleado.DNI_empleado INNER JOIN tbl_mesa ON tbl_ocupacion.id_mesa=tbl_mesa.id_mesa
         // INNER JOIN tbl_sala ON tbl_mesa.id_sala=tbl_sala.id_sala WHERE tbl_sala.id_sala=? ORDER BY tbl_mesa.id_mesa ASC";
         // $sentencia=$this->pdo->prepare($query);
-        $id=$sala->getId_sala();
+        $id=$sala;
         // $sentencia->bindParam(1,$id);
         // $sentencia->execute();
         // $sala=$sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -120,29 +120,29 @@ class salaDAO{
                 
                 switch ($cont) {
                     case 1:
-                        echo "<div class='four-column-mesa'><a href='../controller/ocupaciones.php?id_mesa=".$id."'><img class='imagen' src='../img/mesaverde.png'></img>";
+                        echo "<div class='four-column-mesa'><a href='../view/reservas.php?id_mesa=".$id."&fecha_ocupacion=".$fecha."'><img class='imagen' src='../img/mesaverde.png'></img>";
                             echo "<p>Mesa ".$id." | ".$salas['capacidad_mesa']." P</p>";
                             echo "</a></div>";                        
                         
                     break;
                     case 2:
-                        echo "<div class='four-column-mesa'><a href='../controller/ocupaciones.php?id_mesa=".$id."'><img class='imagen' src='../img/mesaverde.png'></img>";
+                        echo "<div class='four-column-mesa'><a href='../view/reservas.php?id_mesa=".$id."&fecha_ocupacion=".$fecha."'><img class='imagen' src='../img/mesaverde.png'></img>";
                             echo "<p>Mesa ".$id." | ".$salas['capacidad_mesa']." P</p>";
                             echo "</a></div>";                        
                         
                     break;
                     case 3:
-                        echo "<div class='four-column-mesa'><a href='../controller/ocupaciones.php?id_mesa=".$id."'><img class='imagen' src='../img/mesaverde.png'></img>";
+                        echo "<div class='four-column-mesa'><a href='../view/reservas.php?id_mesa=".$id."&fecha_ocupacion=".$fecha."'><img class='imagen' src='../img/mesaverde.png'></img>";
                             echo "<p>Mesa ".$id." | ".$salas['capacidad_mesa']." P</p>";
                             echo "</a></div>";                         
                     break;
                     case 4:
-                        echo "<div class='four-column-mesa'><a href='../controller/ocupaciones.php?id_mesa=".$id."'><img class='imagen' src='../img/mesaverde.png'></img>";
+                        echo "<div class='four-column-mesa'><a href='../view/reservas.php?id_mesa=".$id."&fecha_ocupacion=".$fecha."'><img class='imagen' src='../img/mesaverde.png'></img>";
                         echo "<p>Mesa ".$id." | ".$salas['capacidad_mesa']." P</p>";
                         echo "</a></div>";
                     break;
                     case 5:
-                        echo "<div class='four-column-mesa'><a href='../controller/ocupaciones.php?id_mesa=".$id."'><img class='imagen' src='../img/mesaverde.png'></img>";
+                        echo "<div class='four-column-mesa'><a href='../view/reservas.php?id_mesa=".$id."&fecha_ocupacion=".$fecha."'><img class='imagen' src='../img/mesaverde.png'></img>";
                             echo "<p>Mesa ".$id." | ".$salas['capacidad_mesa']." P</p>";
                             echo "</a></div>";
                         break;
