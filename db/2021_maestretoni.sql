@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-12-2020 a las 17:50:29
+-- Tiempo de generación: 18-12-2020 a las 18:02:32
 -- Versión del servidor: 8.0.13
 -- Versión de PHP: 7.3.2
 
@@ -30,11 +30,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbl_empleado` (
   `DNI_empleado` varchar(9) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `nombre_empleado` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `apellido1_empleado` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `apellido2_empleado` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `tipo_empleado` enum('Camarero','Administrador','Mantenimiento') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `password_empleado` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+  `nombre_empleado` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `apellido1_empleado` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `apellido2_empleado` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tipo_empleado` enum('Camarero','Administrador') CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password_empleado` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -42,19 +42,19 @@ CREATE TABLE `tbl_empleado` (
 --
 
 INSERT INTO `tbl_empleado` (`DNI_empleado`, `nombre_empleado`, `apellido1_empleado`, `apellido2_empleado`, `tipo_empleado`, `password_empleado`) VALUES
-('43345600R', 'Carles', 'Puyol', 'Martinez', 'Camarero', '81dc9bdb52d04dc20036dbd8313ed055'),
-('43345611R', 'Daniel', 'Alves', 'Lara', 'Camarero', '81dc9bdb52d04dc20036dbd8313ed055'),
-('43345672R', 'Camilo', 'Vargas', 'Herrera', 'Mantenimiento', '81dc9bdb52d04dc20036dbd8313ed055'),
-('45414143L', 'Diego', 'Forlan', 'Heras', 'Mantenimiento', '81dc9bdb52d04dc20036dbd8313ed055'),
-('45545672R', 'Thibaut', 'Courtois', 'Zsaly', 'Mantenimiento', '81dc9bdb52d04dc20036dbd8313ed055'),
-('45555555R', 'Lucas', 'Torreira', 'Liandez', 'Mantenimiento', '81dc9bdb52d04dc20036dbd8313ed055'),
-('46492422W', 'Victor', 'Valdes', 'Victoria', 'Camarero', '81dc9bdb52d04dc20036dbd8313ed055'),
+('43345600R', 'Pedro', 'Puyol', 'Maestre', 'Camarero', '81dc9bdb52d04dc20036dbd8313ed055'),
+('43345611R', 'Uri', 'Cases', 'Tellu', 'Camarero', '81dc9bdb52d04dc20036dbd8313ed055'),
+('43345672R', 'Camilito', 'Vargas', 'Herrera', 'Camarero', '81dc9bdb52d04dc20036dbd8313ed055'),
+('45545672R', 'Tabu', 'Courtois', 'Zsaly', 'Camarero', '81dc9bdb52d04dc20036dbd8313ed055'),
+('45555555R', 'Lucas', 'Pato', 'Liandez', 'Camarero', '81dc9bdb52d04dc20036dbd8313ed055'),
+('46492422W', 'Viktor', 'Valdes', 'Victoria', 'Camarero', '81dc9bdb52d04dc20036dbd8313ed055'),
 ('46492428W', 'Gerard', 'Pique', 'Bernabeu', 'Camarero', '81dc9bdb52d04dc20036dbd8313ed055'),
-('46492432W', 'Andres', 'Iniesta', 'Gordillo', 'Camarero', '81dc9bdb52d04dc20036dbd8313ed055'),
 ('46492452W', 'Federico', 'Gonzalez', 'Urieta', 'Camarero', '81dc9bdb52d04dc20036dbd8313ed055'),
 ('46660011D', 'Carlos', 'Jimenez', 'Lopez', 'Administrador', '81dc9bdb52d04dc20036dbd8313ed055'),
-('47645672R', 'Sergio', 'Ramos', 'Gonzalez', 'Mantenimiento', '81dc9bdb52d04dc20036dbd8313ed055'),
-('47777777X', 'Jan', 'Oblak', 'Fritolis', 'Mantenimiento', '81dc9bdb52d04dc20036dbd8313ed055');
+('47645672R', 'Sergio', 'Gramos', 'Gonzalez', 'Camarero', '81dc9bdb52d04dc20036dbd8313ed055'),
+('47777777X', 'Jan', 'Oblak', 'Fritolis', 'Camarero', '81dc9bdb52d04dc20036dbd8313ed055'),
+('58884456T', 'Dani', 'Puyol', 'Crack', 'Camarero', '1234'),
+('91929393S', 'Yefrey', 'Kondogbia', 'Matuto', 'Camarero', '1234');
 
 -- --------------------------------------------------------
 
@@ -86,7 +86,6 @@ INSERT INTO `tbl_incidencia` (`id_incidencia`, `observacion`, `DNI_empleado`, `i
 CREATE TABLE `tbl_mesa` (
   `id_mesa` int(11) NOT NULL,
   `capacidad_mesa` int(2) NOT NULL,
-  `ocupacion_mesa` enum('Libre','Ocupado') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `id_sala` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -94,41 +93,41 @@ CREATE TABLE `tbl_mesa` (
 -- Volcado de datos para la tabla `tbl_mesa`
 --
 
-INSERT INTO `tbl_mesa` (`id_mesa`, `capacidad_mesa`, `ocupacion_mesa`, `id_sala`) VALUES
-(1, 6, 'Libre', 1),
-(2, 6, 'Libre', 1),
-(3, 6, 'Libre', 1),
-(4, 6, 'Libre', 1),
-(5, 8, 'Libre', 1),
-(6, 4, 'Libre', 2),
-(7, 4, 'Libre', 2),
-(8, 4, 'Libre', 2),
-(9, 8, 'Libre', 2),
-(10, 2, 'Libre', 3),
-(11, 2, 'Libre', 3),
-(12, 4, 'Libre', 3),
-(13, 2, 'Libre', 4),
-(14, 1, 'Libre', 4),
-(15, 1, 'Libre', 4),
-(16, 3, 'Libre', 4),
-(17, 1, 'Libre', 5),
-(18, 4, 'Libre', 5),
-(19, 2, 'Libre', 5),
-(20, 1, 'Libre', 5),
-(21, 3, 'Libre', 6),
-(22, 2, 'Libre', 6),
-(23, 5, 'Libre', 6),
-(24, 6, 'Libre', 6),
-(25, 1, 'Libre', 6),
-(26, 3, 'Libre', 7),
-(27, 2, 'Libre', 7),
-(28, 4, 'Libre', 7),
-(29, 8, 'Libre', 7),
-(30, 2, 'Libre', 8),
-(31, 1, 'Libre', 8),
-(32, 1, 'Libre', 8),
-(33, 4, 'Libre', 8),
-(34, 6, 'Libre', 8);
+INSERT INTO `tbl_mesa` (`id_mesa`, `capacidad_mesa`, `id_sala`) VALUES
+(1, 6, 1),
+(2, 6, 1),
+(3, 6, 1),
+(4, 6, 1),
+(5, 8, 1),
+(6, 4, 2),
+(7, 4, 2),
+(8, 4, 2),
+(9, 8, 2),
+(10, 2, 3),
+(11, 2, 3),
+(12, 4, 3),
+(13, 2, 4),
+(14, 1, 4),
+(15, 1, 4),
+(16, 3, 4),
+(17, 1, 5),
+(18, 4, 5),
+(19, 2, 5),
+(20, 1, 5),
+(21, 3, 6),
+(22, 2, 6),
+(23, 5, 6),
+(24, 6, 6),
+(25, 1, 6),
+(26, 3, 7),
+(27, 2, 7),
+(28, 4, 7),
+(29, 8, 7),
+(30, 2, 8),
+(31, 1, 8),
+(32, 1, 8),
+(33, 4, 8),
+(34, 6, 8);
 
 -- --------------------------------------------------------
 
@@ -138,10 +137,9 @@ INSERT INTO `tbl_mesa` (`id_mesa`, `capacidad_mesa`, `ocupacion_mesa`, `id_sala`
 
 CREATE TABLE `tbl_ocupacion` (
   `id_ocupacion` int(11) NOT NULL,
+  `nombre_ocupacion` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `fecha_ocupacion` date NOT NULL,
-  `hora_inicio` time NOT NULL,
-  `hora_final` time DEFAULT NULL,
-  `estado_ocupacion` enum('Abierta','Cerrada') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `franja_ocupacion` enum('12:00h-13:00h','13:00h-14:00h','14:00h-15:00h','15:00h-16:00h','16:00h-17:00h','17:00h-18:00h','18:00h-19:00h','19:00h-20:00h','20:00h-21:00h','21:00h-22:00h','22:00h-23:00h') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `DNI_empleado` varchar(9) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `id_mesa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -150,27 +148,11 @@ CREATE TABLE `tbl_ocupacion` (
 -- Volcado de datos para la tabla `tbl_ocupacion`
 --
 
-INSERT INTO `tbl_ocupacion` (`id_ocupacion`, `fecha_ocupacion`, `hora_inicio`, `hora_final`, `estado_ocupacion`, `DNI_empleado`, `id_mesa`) VALUES
-(71, '2020-11-06', '15:48:46', '16:46:30', 'Cerrada', '43345672R', 1),
-(72, '2020-11-06', '15:48:53', '15:49:18', 'Cerrada', '43345672R', 6),
-(73, '2020-11-06', '15:49:01', '16:48:25', 'Cerrada', '43345672R', 2),
-(74, '2020-11-06', '15:49:02', '17:10:26', 'Cerrada', '43345672R', 3),
-(75, '2020-11-06', '15:49:03', '17:10:27', 'Cerrada', '43345672R', 4),
-(76, '2020-11-06', '15:49:04', '17:10:27', 'Cerrada', '43345672R', 5),
-(77, '2020-11-06', '15:49:33', '17:13:28', 'Cerrada', '43345672R', 6),
-(78, '2020-11-06', '16:06:16', '16:08:48', 'Cerrada', '43345672R', 7),
-(79, '2020-11-06', '16:46:31', '17:10:26', 'Cerrada', '43345672R', 1),
-(80, '2020-11-06', '16:48:26', '17:10:26', 'Cerrada', '43345672R', 2),
-(81, '2020-11-06', '17:10:28', '17:10:29', 'Cerrada', '43345672R', 1),
-(82, '2020-11-06', '17:10:30', '17:10:31', 'Cerrada', '43345672R', 1),
-(83, '2020-11-06', '17:10:31', '17:10:32', 'Cerrada', '43345672R', 2),
-(84, '2020-11-06', '17:10:33', '17:10:33', 'Cerrada', '43345672R', 2),
-(85, '2020-11-06', '17:10:34', '17:10:35', 'Cerrada', '43345672R', 2),
-(86, '2020-11-06', '17:10:35', '17:10:36', 'Cerrada', '43345672R', 2),
-(87, '2020-11-06', '17:10:36', '17:10:37', 'Cerrada', '43345672R', 2),
-(88, '2020-11-06', '17:10:39', '17:10:40', 'Cerrada', '43345672R', 2),
-(89, '2020-11-06', '20:01:22', '20:01:26', 'Cerrada', '46492452W', 10),
-(90, '2020-11-06', '20:04:34', '20:04:41', 'Cerrada', '46492452W', 10);
+INSERT INTO `tbl_ocupacion` (`id_ocupacion`, `nombre_ocupacion`, `fecha_ocupacion`, `franja_ocupacion`, `DNI_empleado`, `id_mesa`) VALUES
+(93, 'Pablo', '2020-12-19', '13:00h-14:00h', '47645672R', 9),
+(94, 'Francisco', '2020-12-25', '20:00h-21:00h', '91929393S', 31),
+(95, 'Agnes', '2020-12-25', '21:00h-22:00h', '46660011D', 12),
+(96, 'Error', '2020-12-17', '20:00h-21:00h', '46660011D', 31);
 
 -- --------------------------------------------------------
 
@@ -229,6 +211,7 @@ ALTER TABLE `tbl_mesa`
 --
 ALTER TABLE `tbl_ocupacion`
   ADD PRIMARY KEY (`id_ocupacion`),
+  ADD UNIQUE KEY `fecha_ocupacion` (`fecha_ocupacion`,`franja_ocupacion`),
   ADD KEY `DNI_empleado` (`DNI_empleado`),
   ADD KEY `id_mesa` (`id_mesa`);
 
@@ -258,7 +241,7 @@ ALTER TABLE `tbl_mesa`
 -- AUTO_INCREMENT de la tabla `tbl_ocupacion`
 --
 ALTER TABLE `tbl_ocupacion`
-  MODIFY `id_ocupacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id_ocupacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_sala`
